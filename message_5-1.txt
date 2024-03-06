@@ -1,0 +1,699 @@
+
+// ==UserScript==
+// @name         Project Ender
+// @version      v3
+// @author       Ender_king
+// @description  R-Insta! | T-Reverse Insta! | C-BoostOneTick! | Shift-Biome Hats! | B-Soldier | Z-Tank/Soldier! | J-Emp | V-Spike | F-Trap | N-Tripple Mills! |
+// @match        *://*.moomoo.io/*
+// @require      https://cdn.jsdelivr.net/npm/msgpack-lite@0.1.26/dist/msgpack.min.js
+// @grant        none
+// @icon         none
+// ==/UserScript==
+
+document.getElementById('promoImgHolder').innerHTML = `
+<style>
+p { font-size: 20px;}#noticationDisplay {
+    vertical-align: top;
+    position;
+    right: 95%;
+    top: 70%;
+    text-align: right;
+} #border { border-top: 5px solid; border-image:black; } .menuButton { background-color: #00ff00,#ff4d4d,#c56cf0,#c56cf0; transition: 0.5s; border-radius: 0px; } .menuButton:hover { background-color: #7f3fbf; transform: scale(1.11); box-shadow: 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.7); } .altServer { color: #00ff00,#ff4d4d,#c56cf0,#c56cf0; } .skinColorHolder { border-color: #00ff00,#ff4d4d,#c56cf0,#c56cf0; } .altServer:hover {color: #7f3fbf; } .menuText { background-color: rgba(63,69,77,255); color: #00ff00,#ff4d4d,#c56cf0,; } #youtuberOf {display: none; } #gameName {display: none;} .menuHeader { background-color: rgba(63,69,77,255); color: #00ff00,#ff4d4d,#c56cf0,#c56cf0; margin-top:0px; border-radius: 0px; box-shadow: 0px 0px #00ff00,#ff4d4d,#c56cf0; }.ytLink { display: none;}#smallLinks { display: none;}#linksContainer2 { background-color: rgba(63,69,77,255); border-top: 5px solid; border-image: linear-gradient(to right,#00ff00,#ff4d4d,#c56cf0,#7f3fbf) 1 1 0 0; height: 18px; top: 0%; color: #00ff00,#ff4d4d,#c56cf0,#c56cf0; transition: 0.3s;}#linksContainer2:hover { box-shadow: 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.7);}#top-wrap-right{ color: #00ff00,#ff4d4d,#c56cf0,#c56cf0;}.check-box {transform: scale(1.1);}.inParty {display: none;}input[type="checkbox"] { position: relative; appearance: none; width: 33px; height: 15.5px; background: #ccc; border-radius: 50px; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); cursor: pointer; top: 7.5px; transition: 0.4s;}input:checked[type="checkbox"] { background: #00ff00,#ff4d4d,#c56cf0;}input[type="checkbox"]::after { position: absolute; content: ""; width: 15.5px; height: 15.5px; top: 0; left: 0; background: #fff; border-radius: 50%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); transform: scale(1.1); transition: 0.4s;}input:checked[type="checkbox"]::after { left: 50%;}#rightCardHolder { left: 0%; top: 0% height: 500px;}#ot-sdk-btn-floating{display: none;} .menuCard { background-color: rgba(63,69,77,255); border-top: 5px solid; border-image: linear-gradient(to right,#00ff00,#ff4d4d,#c56cf0,#000080) 1 0 0 0; color: #900ff00; margin-top:0px; border-radius: 0px; border-bottom: 0px solid red; transition: all 1s; transform: scale(1); box-shadow: 0px 0px #012e38; transform: translateX(0px); } .menuCard:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.7); } .menuCard.active { transform: translateX(0px); } #adCard { display: none; } #promoImgHolder { overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none; height: 90px; max-height: 90px; }
+</style>
+    </head>
+    <div>
+<i class="fa-solid fa-rectangle-list"style="font-size: 25px";></i><p>Updates:</p> <div style="font-size: 20px">
+</div><br>
+
+<div style="font-size: 15px">v1: Make Hat Macro</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v2: Make Auto Heal</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v3: Make Place Macros</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v4: Make Triple Mills</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v5: Make InstaKill</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v6: Make Reverse Insta</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v7: Make BoostOnetick</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v8: Make SpikeHit</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v9: Make Css Visuals(Alostea)</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v10: Make Ping Display/Remove Grid</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v11: Update Instakill</div><div style="font-size: 15px"></div><br>
+
+<div style="font-size: 15px">v12: Make BowInstakill</div><div style="font-size: 15px"></div><br>
+`
+$("#mapDisplay").css({background: `url('https://i.imgur.com/fgFsQJp.png')`});
+
+    document.getElementById('loadingText').innerHTML = 'MADE BY Ender';
+    document.getElementById('loadingText').style.color = "b32821";
+    document.getElementById("nameInput").style.backgroundColor = "black";
+    document.getElementById("nameInput").style.color = "b32821";
+    document.getElementById("enterGame").style.backgroundColor = "Black";
+    document.getElementById("enterGame").style.color = "b32821";
+    document.getElementById("mainMenu").style.backgroundImage = "url('https://wallpapers.com/images/high/badass-venom-1ijuc6oq7lwydabq.webp')"
+    document.getElementById("mainMenu").style.backgroundRepeat = "no-repeat";
+    document.getElementById("mainMenu").style.backgroundSize = "cover";
+    document.getElementById('enterGame').innerHTML ='play ?';
+    document.getElementById('enterGame').style.color = 'text-shadow: red 1px 1px 40px;';
+    document.getElementById('nameInput').placeholder = "Enter";
+    document.getElementById('diedText').innerHTML = 'Reserection';
+    document.getElementById('gameName').innerHTML = '𝕻𝖗𝖔𝖏𝖊𝖈𝖙 𝕰𝖓𝖉𝖊𝖗';
+    document.getElementById('gameName').style.color = "ffff66";
+    document.getElementById("leaderboard").append ('𝕻𝖗𝖔𝖏𝖊𝖈𝖙 𝕰𝖓𝖉𝖊𝖗');
+    document.getElementById("leaderboard").style.color = "text-shadow: green 2px 2px 40px;";
+
+
+
+
+CanvasRenderingContext2D.prototype.roundRect = ((oldFunc) => function() { if (this.fillStyle == "#8ecc51") this.fillStyle = `hsl(120, 60%, 67%)`; return oldFunc.call(this, ...arguments); })(CanvasRenderingContext2D.prototype.roundRect);
+
+document.getElementById("storeHolder").style = "height: 1500px; width: 450px;"
+document.getElementById('adCard').remove();
+document.getElementById('errorNotification').remove();
+
+setInterval(() => window.follmoo && follmoo(), 10);
+
+function Hat(id){
+    storeEquip(id);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.keyCode == 66 && document.activeElement.id.toLowerCase() !== 'chatbox') { // B-Solider
+        Hat(6);
+    }
+    if (e.keyCode == 135 && document.activeElement.id.toLowerCase() !== 'chatbox') { // Z-Tank
+        Hat(40);
+    }
+    if (e.keyCode == 74 && document.activeElement.id.toLowerCase() !== 'chatbox') { // J-Emp
+        Hat(22);
+    }
+});
+
+let ws;
+let x = 0;
+let y = 0;
+let mouseX;
+let mouseY;
+let msgpack5 = window.msgpack;
+let scale = 45;
+let placeOffset = 5;
+let cmds = { autoheal: false, automill: false
+}
+let inv = { primary: null, secondary: null, food: null, wall: null, spike: null, mill: null, mine: null, boostPad: null, trap: null, turret: null, teleporter: null, spawnpad: null
+};
+
+// PLAYER \\
+let myPlayer = {
+sid: null,
+hp: null,
+x: null,
+y: null,
+dir: null,
+buildIndex: null,
+weaponIndex: null,
+weaponVariant: null,
+team: null,
+isLeader: null,
+skinIndex: null,
+tailIndex: null,
+iconIndex: null
+};
+let enemy;
+let nearestEnemy;
+let enemyInf = {
+hat: null,
+x: null,
+y: null,
+weaponIndex: null
+}
+
+  document.msgpack = window.msgpack;
+  WebSocket.prototype.oldSend = WebSocket.prototype.send;
+  WebSocket.prototype.send = function (e) {
+    ws || (document.ws = this, ws = this, document.ws.addEventListener("message", hookWS));
+    this.oldSend(e);
+  };
+  function dist(a, b){
+    return Math.sqrt( Math.pow((b.y-a[2]), 2) + Math.pow((b.x-a[1]), 2) );
+  }
+  let join = message => Array.isArray(message) ? [...message] : [...message];
+  let hookWS = ms => {
+    let tmpData = msgpack5.decode(new Uint8Array(ms.data));
+    let data;
+    if(tmpData.length > 1) { data = [tmpData[0], ...tmpData[1]]; if (data[1] instanceof Array){ data = data } } else { data = tmpData }
+    let item = data[0];
+    if(!data) {return};
+
+    if (item == "C" && myPlayer.sid == null){
+        myPlayer.sid = data[1];
+    }
+    if(item == "O" && data[1] == myPlayer.sid) {
+    let hp = data[2]
+    if (hp < 98) {
+      let c;
+      if (hp < 98) c = 3.9;
+      if (hp < 60) c =3.9;
+      setTimeout(()=>{
+      for (let i=0;i<c;i++) { place(inv.food) }
+      }, 11);
+      }
+    }
+    if (item == "a") {
+        enemy = [];
+        for(let i = 0; i < data[1].length / 13; i++) {
+            let inf = data[1].slice(13*i, 13*i+13);
+            if(inf[0] == myPlayer.sid) {
+                myPlayer.x = inf[1];
+                myPlayer.y = inf[2];
+                myPlayer.dir = inf[3];
+                myPlayer.buildIndex = inf[4];
+                myPlayer.weaponIndex = inf[5];
+                myPlayer.weaponVariant = inf[6];
+                myPlayer.team = inf[7];
+                myPlayer.isLeader = inf[8];
+                myPlayer.skinIndex = inf[9];
+                myPlayer.tailIndex = inf[10];
+                myPlayer.iconIndex = inf[11];
+
+            } else if(inf[7] != myPlayer.team || inf[7] === null) {
+                enemy.push(inf);
+            }
+        }
+    }
+   if (enemy) {
+        nearestEnemy = enemy.sort((a, b) => dist(a, myPlayer) - dist(b, myPlayer))[0];
+    }
+   if (nearestEnemy) {
+      enemyInf.weaponIndex = nearestEnemy[5]
+      enemyInf.hat = nearestEnemy[9]
+      enemyInf.x = nearestEnemy[1]
+      enemyInf.y = nearestEnemy[2]
+   }
+   if (y !== myPlayer.y || x !== myPlayer.x) {
+           if (cmds.automill) {
+            let angle = Math.atan2(y - myPlayer.y, x - myPlayer.x);
+            place(inv.mill, angle + Math.PI / 2.5);
+            place(inv.mill, angle);
+            place(inv.mill, angle - Math.PI / 2.5);
+           }
+          x = myPlayer.x;
+          y = myPlayer.y;
+        }
+      refresh();
+    }
+
+  var repeater = function(key, action, interval) {
+    let _isKeyDown = false;
+    let _intervalId = undefined;
+    return {
+        start(keycode) {
+            if(keycode == key && document.activeElement.id.toLowerCase() !== 'chatbox') {
+                _isKeyDown = true;
+                if(_intervalId === undefined) {
+                    _intervalId = setInterval(() => {
+                        action();
+                        if(!_isKeyDown){
+                            clearInterval(_intervalId);
+                            _intervalId = undefined;
+  } }, interval) } } }, stop(keycode) { if(keycode == key && document.activeElement.id.toLowerCase() !== 'chatbox') { _isKeyDown = false; } } } }
+
+  const emit = (e, a, b, c, m, r) => ws.send(Uint8Array.from([...msgpack5.encode([e, [a, b, c, m, r]])]));
+  const place = (e, l) => {
+    emit("G", e, false);
+    emit("d", 1, l);
+    emit("d", 0, l);
+    emit("G", myPlayer.weaponIndex, true);
+  };
+  function chat(msg) { emit("6", msg); }
+  function hat(id) { emit("c", myPlayer.skinIndex, id, 0) }
+  function acc(id) { emit("c", myPlayer.tailIndex, id, 1) }
+  function weapon(e) {
+   if (e === 'primary') { emit("G", inv.primary, true); }
+   if (e === 'secondary') { emit("G", inv.secondary, true) }
+  }
+  function hit(e) {
+   if (e == true || e == false) emit("K", true)
+  }
+
+  const refresh = () => {
+    for (let c = 0; c < 9; c++) {
+      var _document$getElementB;
+      if (((_document$getElementB = document.getElementById(`actionBarItem${c}`)) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.offsetParent) !== null) {
+        inv.primary = c;
+      }
+    }
+    for (let s = 9; s < 16; s++) {
+      var _document$getElementB2;
+      if (((_document$getElementB2 = document.getElementById(`actionBarItem${s}`)) === null || _document$getElementB2 === void 0 ? void 0 : _document$getElementB2.offsetParent) !== null) {
+        inv.secondary = s;
+      }
+    }
+    for (let P = 16; P < 19; P++) {
+      var _document$getElementB3;
+      if (((_document$getElementB3 = document.getElementById(`actionBarItem${P}`)) === null || _document$getElementB3 === void 0 ? void 0 : _document$getElementB3.offsetParent) !== null) {
+        inv.food = P - 16;
+      }
+    }
+    for (let f = 19; f < 22; f++) {
+      var _document$getElementB4;
+      if (((_document$getElementB4 = document.getElementById(`actionBarItem${f}`)) === null || _document$getElementB4 === void 0 ? void 0 : _document$getElementB4.offsetParent) !== null) {
+        inv.wall = f - 16;
+      }
+    }
+    for (let _ = 22; _ < 26; _++) {
+      var _document$getElementB5;
+      if (((_document$getElementB5 = document.getElementById(`actionBarItem${_}`)) === null || _document$getElementB5 === void 0 ? void 0 : _document$getElementB5.offsetParent) !== null) {
+        inv.spike = _ - 16;
+      }
+    }
+    for (let u = 26; u < 29; u++) {
+      var _document$getElementB6;
+      if (((_document$getElementB6 = document.getElementById(`actionBarItem${u}`)) === null || _document$getElementB6 === void 0 ? void 0 : _document$getElementB6.offsetParent) !== null) {
+        inv.mill = u - 16;
+      }
+    }
+    for (let I = 29; I < 31; I++) {
+      var _document$getElementB7;
+      if (((_document$getElementB7 = document.getElementById(`actionBarItem${I}`)) === null || _document$getElementB7 === void 0 ? void 0 : _document$getElementB7.offsetParent) !== null) {
+        inv.mine = I - 16;
+      }
+    }
+    for (let p = 31; p < 33; p++) {
+      var _document$getElementB8;
+      if (((_document$getElementB8 = document.getElementById(`actionBarItem${p}`)) === null || _document$getElementB8 === void 0 ? void 0 : _document$getElementB8.offsetParent) !== null) {
+        inv.boostPad = p - 16;
+      }
+    }
+    for (let x = 31; x < 33; x++) {
+      var _document$getElementB9;
+      if (((_document$getElementB9 = document.getElementById(`actionBarItem${x}`)) === null || _document$getElementB9 === void 0 ? void 0 : _document$getElementB9.offsetParent) !== null) {
+        inv.trap = x - 16;
+      }
+    }
+    for (let g = 29; g < 31; g++) {
+      var _document$getElementB10;
+      if (((_document$getElementB10 = document.getElementById(`actionBarItem${g}`)) === null || _document$getElementB10 === void 0 ? void 0 : _document$getElementB10.offsetParent) !== null) {
+        inv.teleporter = g - 16;
+      }
+  }
+  };
+
+  const boostPlacer = repeater(70, () => {place(inv.trap)}, 0)
+  const spikePlacer = repeater(86, () => { place(inv.spike)}, 0);
+  document.addEventListener("keydown", e => {
+
+    if (document.activeElement.id.toLowerCase() === 'chatbox') return;
+        spikePlacer.start(e.keyCode);
+        boostPlacer.start(e.keyCode);
+    if (e.keyCode == 78) {
+      //chat(`Mills: ${cmds.automill ? 'OFF' : 'ON'}`);
+      if (cmds.automill == true) { cmds.automill = false } else { cmds.automill = true }
+    }
+
+  });
+
+  document.addEventListener("keydown", e => {
+    if (document.activeElement.id.toLowerCase() === 'chatbox') return;
+
+        spikePlacer.stop(e.keyCode);
+        boostPlacer.stop(e.keyCode);
+    if (e.keyCode === 81) {
+     for (let i=0;i<2;i++) { place(inv.food); }
+    };
+
+// BIOME HATS CODE \\
+if (e.keyCode == 16) {
+if (myPlayer.y < 2400){
+storeEquip(15, 0);
+setTimeout(() => {
+acc(19);
+}, 70);
+} else if (myPlayer.y > 6850 && myPlayer.y < 7550){
+storeEquip(31, 0);
+setTimeout(() => {
+acc(19);
+}, 70);
+} else {
+storeEquip(12, 0);
+setTimeout(() => {
+acc(19);
+}, 70);
+}
+};
+
+// Z CLICK \\
+if (e.keyCode == 90) {
+setTimeout(() => {
+storeEquip(40, 0);
+hit(true);
+setTimeout(() => {
+storeEquip(6, 0);
+hit(false);
+}, 110);
+}, 1);
+};
+
+// INSTAKILL CODE \\
+if (e.keyCode == 82) {
+chat("xX-GOD-INSTA-Xx");
+weapon('primary');
+setTimeout(() => {
+storeEquip(7, 0);
+setTimeout(()=> {
+hit(true);
+setTimeout(()=>{
+storeEquip(53, 0);
+weapon('secondary');
+setTimeout(()=>{
+storeEquip(6, 0);
+weapon('primary');
+setTimeout(()=>{
+hit(false);
+}, 80);
+}, 102);
+},100);
+}, 17);
+}, 100);
+};
+
+// BOOST 1 TICK \\
+if (e.keyCode == 67) {
+chat("xXBOOST-TICK-Xx");
+setTimeout(() => {
+place(inv.boostPad);
+setTimeout(()=>{
+weapon('secondary');
+storeEquip(53, 0);
+hit(true);
+setTimeout(() => {
+weapon('primary');
+storeEquip(7, 0);
+setTimeout( () => {
+storeEquip(6, 0);
+hit(false);
+}, 255);
+}, 140);
+}, 1.5);
+}, 150);
+};
+
+// REVERSE INSTAKILL \\
+if (e.keyCode == 84) {
+chat("xX-REVERSE-INSTA-Xx");
+weapon('secondary');
+setTimeout(()=>{
+}, 100);
+storeEquip(53, 0);
+hit(true);
+setTimeout(() => {
+weapon('primary');
+storeEquip(7, 0);
+setTimeout(() => {
+storeEquip(6, 0);
+hit(false);
+}, 355);
+}, 140);
+};
+});
+// PING DISPLAY \\
+
+let ping = document.createElement("div");
+ping = document.getElementById("pingDisplay");
+ping.style.top = "13px";
+ping.style.fontSize = "15px";
+ping.style.display = "block";
+ping.style.left = "50px";
+document.body.append(ping);
+
+// REMOVE GRID \\
+
+(function() {
+
+let oldLineTo = CanvasRenderingContext2D.prototype.lineTo;
+let oldFillRect = CanvasRenderingContext2D.prototype.fillRect;
+
+CanvasRenderingContext2D.prototype.lineTo = function() {
+    if (this.globalAlpha != .06) oldLineTo.apply(this, arguments);
+};
+
+document.getElementById("enterGame").addEventListener('click', rwrw)
+var RLC = 0
+var MLC = 0
+var KFC = 0
+
+function rwrw() {
+    console.log("Game Start")
+    S = 1;
+    M = 1;
+    H = 1
+}
+var H = 1,
+    M = 1,
+    S = 1
+setInterval(() => {
+    RLC++
+    S++
+}, 1000);
+setInterval(() => {
+    if (RLC == 60) {
+        MLC++
+        RLC = 0
+    }
+    if (MLC == 60) {
+        KFC++
+        MLC = 0
+    }
+    if (S == 60) {
+        M++
+        S = 0
+    }
+    if (M == 60) {
+        H++
+        M = 0
+    }
+}, 0);
+    const { msgpack } = window
+
+    function AntiKick() {
+        this.resetDelay = 500
+        this.packetsLimit = 40
+
+        this.ignoreTypes = [ "pp", "rmd" ]
+        this.ignoreQueuePackets = [ "5", "c", "33", "2", "7", "13c" ]
+
+        this.packetsStorage = new Map()
+        this.tmpPackets = []
+        this.packetsQueue = []
+
+        this.lastSent = Date.now()
+
+        this.onSend = function(data) {
+            const binary = new Uint8Array(data)
+            const parsed = msgpack.decode(binary)
+
+            if (Date.now() - this.lastSent > this.resetDelay) {
+                this.tmpPackets = []
+
+                this.lastSent = Date.now()
+            }
+
+            if (!this.ignoreTypes.includes(parsed[0])) {
+                if (this.packetsStorage.has(parsed[0])) {
+                    const oldPacket = this.packetsStorage.get(parsed[0])
+
+                    switch (parsed[0]) {
+                        case "2":
+                        case "33":
+                            if (oldPacket[0] == parsed[1][0]) return true
+                            break
+                    }
+                }
+
+                if (this.tmpPackets.length > this.packetsLimit) {
+                    if (!this.ignoreQueuePackets.includes(parsed[0])) {
+                        this.packetsQueue.push(data)
+                    }
+
+                    return true
+                }
+
+                this.tmpPackets.push({
+                    type: parsed[0],
+                    data: parsed[1]
+                })
+
+                this.packetsStorage.set(parsed[0], parsed[1])
+            }
+
+            return false
+        }
+    }
+
+    const antiKick = new AntiKick()
+
+    let firstSend = false
+
+    window.WebSocket.prototype.send = new Proxy(window.WebSocket.prototype.send, {
+        apply: function(target, _this) {
+            if (!firstSend) {
+                _this.addEventListener("message", (event) => {
+                    if (!antiKick.packetsQueue.length) return
+
+                    const binary = new Uint8Array(event.data)
+                    const parsed = msgpack.decode(binary)
+
+                    if (parsed[0] === "33") {
+                        _this.send(antiKick.packetsQueue[0])
+
+                        antiKick.packetsQueue.shift()
+                    }
+                })
+
+                firstSend = true
+            }
+
+            if (antiKick.onSend(arguments[2][0])) return
+
+            return Reflect.apply(...arguments)
+
+
+        }
+    })
+})();
+// ==UserScript==
+// @name         Project Ender
+// @version      v14
+// @description  Makes team members (and yourself) have color-changing health bars! Client-side only, others cannot see it.
+// @author       Ender
+// @match        *://*.moomoo.io/*
+// @grant        none
+// ==/UserScript==
+
+let hue = 0;
+
+let replaceInterval = setInterval(() => {
+if (CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = ((oldFunc) => function() { if (this.fillStyle == "#8ecc51") this.fillStyle = `hsl(${hue}, 100%, 50%)`; return oldFunc.call(this, ...arguments); })(CanvasRenderingContext2D.prototype.roundRect);
+  clearInterval(replaceInterval);
+}}, 10);
+
+function changeHue() {
+  hue += Math.random() * 3;
+}
+
+setInterval(changeHue, 10);
+
+
+let autoBuy = new Autobuy([15, 31, 6, 7, 22, 12, 53, 20, 40], [11, 13, 19, 18, 21]);
+
+            class Autobuy {
+                constructor(buyHat, buyAcc) {
+                    this.hat = function() {
+                        buyHat.forEach((id) => {
+                            let find = findID(hats, id);
+                            if (find && !player.skins[id] && player.points >= find.price) packet("c", 1, id, 0);
+                        });
+                    };
+                    this.acc = function() {
+                        buyAcc.forEach((id) => {
+                            let find = findID(accessories, id);
+                            if (find && !player.tails[id] && player.points >= find.price) packet("c", 1, id, 1);
+                        });
+                    };
+                }
+            };
+            class Autoupgrade {
+                constructor() {
+                    this.sb = function(upg) {
+                        upg(3);
+                        upg(17);
+                        upg(31);
+                        upg(23);
+                        upg(9);
+                        upg(38);
+                    };
+                    this.kh = function(upg) {
+                        upg(3);
+                        upg(17);
+                        upg(31);
+                        upg(23);
+                        upg(10);
+                        upg(38);
+                        upg(4);
+                        upg(25);
+                    };
+                    this.pb = function(upg) {
+                        upg(5);
+                        upg(17);
+                        upg(32);
+                        upg(23);
+                        upg(9);
+                        upg(38);
+                    };
+                    this.ph = function(upg) {
+                        upg(5);
+                        upg(17);
+                        upg(32);
+                        upg(23);
+                        upg(10);
+                        upg(38);
+                        upg(28);
+                        upg(25);
+                    };
+                    this.db = function(upg) {
+                        upg(7);
+                        upg(17);
+                        upg(31);
+                        upg(23);
+                        upg(9);
+                        upg(34);
+                    };
+                    /* old functions */
+                    this.km = function(upg) {
+                        upg(7);
+                        upg(17);
+                        upg(31);
+                        upg(23);
+                        upg(10);
+                        upg(38);
+                        upg(4);
+                        upg(15);
+                    };
+                };
+            };
+            class Damages {
+                constructor(items) {
+                    // 0.75 1 1.125 1.5
+                    this.calcDmg = function(dmg, val) {
+                        return dmg * val;
+                    };
+                    this.getAllDamage = function(dmg) {
+                        return [this.calcDmg(dmg, 0.75), dmg, this.calcDmg(dmg, 1.125), this.calcDmg(dmg, 1.5)];
+                    };
+                    this.weapons = [];
+                    for (let i = 0; i < items.weapons.length; i++) {
+                        let wp = items.weapons[i];
+                        let name = wp.name.split(" ").length <= 1 ? wp.name : (wp.name.split(" ")[0] + "_" + wp.name.split(" ")[1]);
+                        this.weapons.push(this.getAllDamage(i > 8 ? wp.Pdmg : wp.dmg));
+                        this[name] = this.weapons[i];
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
